@@ -25,7 +25,7 @@
     "grunt-contrib-coffee": "~0.10.1",
     "bcrypt-nodejs": "0.0.3",
     "grunt-contrib-sass": "^0.7.3",
-    "nodemailer": "^0.7.0",
+    "nodemailer": "~0.6.5",
     "optimist": "^0.6.1",
     "grunt-contrib-sass": "^0.7.3",
     "matchdep": "^0.3.0"
