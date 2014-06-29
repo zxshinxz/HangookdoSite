@@ -26,7 +26,9 @@
     "bcrypt-nodejs": "0.0.3",
     "grunt-contrib-sass": "^0.7.3",
     "nodemailer": "^0.7.0",
-    "optimist": "^0.6.1"
+    "optimist": "^0.6.1",
+    "grunt-contrib-sass": "^0.7.3",
+    "matchdep": "^0.3.0"
   },
   "scripts": {
     "start": "node app.js",
@@ -40,7 +42,6 @@
   "author": "anonymous node/sails user",
   "license": "ISC",
   "devDependencies": {
-    "grunt-contrib-sass": "^0.7.3",
-    "matchdep": "^0.3.0"
+    
   }
 }
