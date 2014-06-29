@@ -35,7 +35,7 @@ mongoTest.controller('MainCtrl',function($scope, HangookdoService, $fileUploader
       			}
           },{
       		style: {
-      			'background': 'url("images/title_5_c.png")',
+      			'background': 'url("images/title_5_C.png")',
       			'background-color': '#AEBD63',
       			'background-repeat': 'no-repeat',
       			'background-position': 'center'
