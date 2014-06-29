@@ -1,6 +1,4 @@
 eclipse.preferences.version=1
 encoding//api/controllers/EmailController.js=UTF-8
 encoding//api/controllers/UserController.js=UTF-8
-encoding//assets/templates/about.html=UTF-8
-encoding//assets/templates/main.html=UTF-8
 encoding//views/homepage.ejs=UTF-8
