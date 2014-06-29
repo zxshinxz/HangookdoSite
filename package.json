@@ -28,9 +28,8 @@
     "nodemailer": "~0.6.5",
     "optimist": "^0.6.1",
     "matchdep": "^0.3.0",
-    "forever": "^0.11.1",
-    "forever-monitor": "^1.2.3",
-    "airbrake": "^0.3.8"
+    "nodemon": "^1.2.0",
+    "grunt-cli": "^0.1.13"
   },
   "scripts": {
     "start": "node app.js",
