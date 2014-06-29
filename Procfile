@@ -1,1 +1,1 @@
-web: forever start app.js --prod
+web: npm install node app.js
