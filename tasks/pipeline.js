@@ -25,7 +25,25 @@ var jsFilesToInject = [
 
   // Dependencies like sails.io.js, jQuery, or Angular
   // are brought in here
-  'js/dependencies/**/*.js',
+//  	'js/dependencies/es5-shim.js',
+//	'js/dependencies/dist/jquery.js',
+//	'js/dependencies/angular.js',
+//	'js/dependencies/js/bootstrap.js',
+//	'js/dependencies/ui-bootstrap-tpls.js',
+//	'js/dependencies/TimelineMax.min.js',
+//	'js/dependencies/TweenMax.min.js',
+//	'js/dependencies/angular-animate.js',
+//	'js/dependencies/angular-cookies.js',
+//	'js/dependencies/angular-resource.js',
+//	'js/dependencies/angular-route.js',
+//	'js/dependencies/angular-sanitize.js',
+//	'js/dependencies/angular-touch.js',
+//	'js/dependencies/angular-file-upload.js',
+//	'js/app.js',
+//	'js/dependencies/HangookdoController.js',
+//	'js/dependencies/HangookdoDirective.js',
+//	'js/dependencies/HangookdoService.js',
+//  	'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
