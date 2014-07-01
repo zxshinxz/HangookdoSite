@@ -1,0 +1,136 @@
+{
+  "data": {
+    "comment": [],
+    "news": [],
+    "post": [],
+    "tag": [],
+    "user": [
+      {
+        "userid": "zxshinxz",
+        "firstname": "Andy Yoonyong",
+        "lastname": "Shin",
+        "email": "andy.yoonyong@gmail.com",
+        "password": "$2a$11$XXs4aPKkc05Km5OgHbVzXeStqatDA0DczfcfmN3cxxY1LrTeZ6KZq",
+        "role": "MEMBER",
+        "createdAt": "2014-07-01T10:21:12.285Z",
+        "updatedAt": "2014-07-01T11:30:31.700Z",
+        "id": 1,
+        "activation_code": "80169c36",
+        "accesscount": 0
+      }
+    ]
+  },
+  "schema": {
+    "comment": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "news": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "post": {
+      "title": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "category_id": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "tag": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "userid": {
+        "unique": true,
+        "type": "string"
+      },
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
+      },
+      "email": {
+        "unique": true,
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "comment": {},
+    "news": {},
+    "post": {},
+    "tag": {},
+    "user": {
+      "id": 1
+    }
+  }
+}

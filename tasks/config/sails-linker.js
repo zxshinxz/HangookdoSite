@@ -22,9 +22,9 @@ module.exports = function(grunt) {
 				appRoot: 'public'
 			},
 			files: {
-				'public/**/*.html': require('../pipeline').jsFilesToInject,
-				'views/**/*.html': require('../pipeline').jsFilesToInject,
-				'views/**/*.ejs': require('../pipeline').jsFilesToInject
+				'public/**/*.html': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.html':[ require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
 			}
 		},
 

@@ -66,7 +66,7 @@ module.exports = {
 			 if(error){
 			     console.log(error);
 			 }else{
-				 console.log("mail sent from: " + emailaddress);
+				 console.log("mail sent to: " + emailaddress);
 				 res.send("Thank you for contacting NZ Korea " +
 				 		"Hangookdo(Hapkido) Federation. We will " +
 				 		"reponde to your enquery as soon as possible.");

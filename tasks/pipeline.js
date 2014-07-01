@@ -28,7 +28,7 @@ var jsFilesToInject = [
   	'js/dependencies/sails.io.js',
   	'js/dependencies/es5-shim.js',
 	'js/dependencies/dist/jquery.js',
-	'js/dependencies/angular.min.js',
+	'js/dependencies/angular.js',
 	'js/dependencies/js/bootstrap.js',
 	'js/dependencies/ui-bootstrap-tpls.js',
 	'js/dependencies/TimelineMax.min.js',
@@ -40,10 +40,6 @@ var jsFilesToInject = [
 	'js/dependencies/angular-sanitize.js',
 	'js/dependencies/angular-touch.js',
 	'js/dependencies/angular-file-upload.js',
-	'js/dependencies/app.js',
-	'js/dependencies/HangookdoController.js',
-	'js/dependencies/HangookdoDirective.js',
-	'js/dependencies/HangookdoService.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
 ];

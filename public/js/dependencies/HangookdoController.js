@@ -320,7 +320,7 @@ hangookdoApp.controller('ActivateCtrl',function($scope, HangookdoService) {
 			$scope.isActivate = false;
 		});
 		
-		$scope.catch.then(function(data){
+		$scope.promise.catch(function(data){
 			alert(data);
 			$scope.isActivate = false;
 		});
