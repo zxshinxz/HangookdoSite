@@ -1,6 +1,6 @@
 'user strict'
 
-mongoTest.directive('scrollSpy', function($window, $document) {
+hangookdoApp.directive('scrollSpy', function($window, $document) {
 	return {
 		controller: function($scope){
 			
@@ -55,7 +55,7 @@ mongoTest.directive('scrollSpy', function($window, $document) {
 	}
 });
 
-mongoTest.directive('spy', function($window, $location, $anchorScroll) {
+hangookdoApp.directive('spy', function($window, $location, $anchorScroll) {
 	return {
 		restrict: "A",
 		scope: {
@@ -90,7 +90,7 @@ mongoTest.directive('spy', function($window, $location, $anchorScroll) {
 	}
 });
 
-mongoTest.directive('angularAffix', function($window) {
+hangookdoApp.directive('angularAffix', function($window) {
 	return {
 		scope: {
 			top: '@',
@@ -141,7 +141,7 @@ mongoTest.directive('angularAffix', function($window) {
 });
 
 var INTEGER_REGEXP = /^\-?\d+$/;
-mongoTest.directive('integer', function() {
+hangookdoApp.directive('integer', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
@@ -161,7 +161,7 @@ mongoTest.directive('integer', function() {
 });
 
 var ALPHABET_REGEXP = /^[A-Za-z\s]+$/;
-mongoTest.directive('alphabet', function() {
+hangookdoApp.directive('alphabet', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
@@ -181,7 +181,7 @@ mongoTest.directive('alphabet', function() {
 });
 
 var EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-mongoTest.directive('email', function() {
+hangookdoApp.directive('email', function() {
 	  return {
 	    require: 'ngModel',
 	    link: function(scope, elm, attrs, ctrl) {
@@ -201,7 +201,7 @@ mongoTest.directive('email', function() {
 	});
 
 
-mongoTest.directive('minLength', function() {
+hangookdoApp.directive('minLength', function() {
 	  return {
 	    require: 'ngModel',
 	    link: function(scope, elm, attrs, ctrl) {
@@ -220,7 +220,7 @@ mongoTest.directive('minLength', function() {
 	  };
 	});
 
-mongoTest.directive('disableAnimation', function($animate){
+hangookdoApp.directive('disableAnimation', function($animate){
     return {
         restrict: 'A',
         link: function($scope, $element, $attrs){
@@ -231,7 +231,7 @@ mongoTest.directive('disableAnimation', function($animate){
     }
 });
 
-mongoTest.directive('same', function() {
+hangookdoApp.directive('same', function() {
 	  return {
 	    require: 'ngModel',
 	    link: function(scope, elm, attrs, ctrl) {
@@ -251,7 +251,7 @@ mongoTest.directive('same', function() {
 	});
 
 
-//mongoTest.directive('hide', function($animate){
+//hangookdoApp.directive('hide', function($animate){
 //    return {
 //        restrict: 'A',
 //        link: function($scope, $element, $attrs){
@@ -269,7 +269,7 @@ mongoTest.directive('same', function() {
 //});
 
 //
-// mongoTest.directive('resizable', function($window) {
+// hangookdoApp.directive('resizable', function($window) {
 //	return function($scope) {
 ////		$scope.initializeWindowSize = function() {
 ////			$scope.windowHeight = $window.innerHeight;

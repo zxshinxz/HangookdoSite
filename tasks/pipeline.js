@@ -25,31 +25,37 @@ var jsFilesToInject = [
 
   // Dependencies like sails.io.js, jQuery, or Angular
   // are brought in here
-//  	'js/dependencies/es5-shim.js',
-//	'js/dependencies/dist/jquery.js',
-//	'js/dependencies/angular.js',
-//	'js/dependencies/js/bootstrap.js',
-//	'js/dependencies/ui-bootstrap-tpls.js',
-//	'js/dependencies/TimelineMax.min.js',
-//	'js/dependencies/TweenMax.min.js',
-//	'js/dependencies/angular-animate.js',
-//	'js/dependencies/angular-cookies.js',
-//	'js/dependencies/angular-resource.js',
-//	'js/dependencies/angular-route.js',
-//	'js/dependencies/angular-sanitize.js',
-//	'js/dependencies/angular-touch.js',
-//	'js/dependencies/angular-file-upload.js',
-//	'js/app.js',
-//	'js/dependencies/HangookdoController.js',
-//	'js/dependencies/HangookdoDirective.js',
-//	'js/dependencies/HangookdoService.js',
-//  	'js/dependencies/**/*.js',
-
+  	'js/dependencies/sails.io.js',
+  	'js/dependencies/es5-shim.js',
+	'js/dependencies/dist/jquery.js',
+	'js/dependencies/angular.min.js',
+	'js/dependencies/js/bootstrap.js',
+	'js/dependencies/ui-bootstrap-tpls.js',
+	'js/dependencies/TimelineMax.min.js',
+	'js/dependencies/TweenMax.min.js',
+	'js/dependencies/angular-animate.js',
+	'js/dependencies/angular-cookies.js',
+	'js/dependencies/angular-resource.js',
+	'js/dependencies/angular-route.js',
+	'js/dependencies/angular-sanitize.js',
+	'js/dependencies/angular-touch.js',
+	'js/dependencies/angular-file-upload.js',
+	'js/dependencies/app.js',
+	'js/dependencies/HangookdoController.js',
+	'js/dependencies/HangookdoDirective.js',
+	'js/dependencies/HangookdoService.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
 ];
 
+//Client-side javascript files to inject in order
+//(uses Grunt-style wildcard/glob/splat expressions)
+var jsFilesToInjectForApp = [
+	'js/dependencies/app.js',
+	'js/dependencies/HangookdoController.js',
+	'js/dependencies/HangookdoDirective.js',
+	'js/dependencies/HangookdoService.js'
+];
 
 // Client-side HTML templates are injected using the sources below
 // The ordering of these templates shouldn't matter.
@@ -70,11 +76,15 @@ var templateFilesToInject = [
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
 module.exports.cssFilesToInject = cssFilesToInject.map(function(path) {
-  return '.tmp/public/' + path;
+  return 'public/' + path;
 });
 module.exports.jsFilesToInject = jsFilesToInject.map(function(path) {
-  return '.tmp/public/' + path;
+  return 'public/' + path;
 });
+module.exports.jsFilesToInjectForApp = jsFilesToInjectForApp.map(function(path) {
+  return 'public/' + path;
+});
+
 module.exports.templateFilesToInject = templateFilesToInject.map(function(path) {
   return 'assets/' + path;
 });

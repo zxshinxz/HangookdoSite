@@ -1,6 +1,6 @@
 'user strict'
 
-mongoTest.controller('MainCtrl',function($scope, HangookdoService, $fileUploader, $window) {
+hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $fileUploader, $window) {
 	 $scope.pageClass = 'page-home';
 	 $scope.myInterval = 4000;
 	 
@@ -110,7 +110,7 @@ mongoTest.controller('MainCtrl',function($scope, HangookdoService, $fileUploader
 });
 
 
-mongoTest.controller('AboutCtrl',function($scope, $location, $anchorScroll) {
+hangookdoApp.controller('AboutCtrl',function($scope, $location, $anchorScroll) {
 	$scope.pageClass = 'page-about';
 	$scope.gotoTop = function (){
 	    // set the location.hash to the id of
@@ -127,7 +127,7 @@ mongoTest.controller('AboutCtrl',function($scope, $location, $anchorScroll) {
 });
 
 
-mongoTest.controller('ContactCtrl',function($scope, HangookdoService, $location, $anchorScroll) {
+hangookdoApp.controller('ContactCtrl',function($scope, HangookdoService, $location, $anchorScroll) {
 	$scope.pageClass = 'page-contact';
 	$scope.gotoTop = function (){
 	    // set the location.hash to the id of
@@ -154,12 +154,12 @@ mongoTest.controller('ContactCtrl',function($scope, HangookdoService, $location,
 });
 
 
-mongoTest.controller('LinksCtrl',function($scope) {
+hangookdoApp.controller('LinksCtrl',function($scope) {
 	$scope.pageClass = 'page-links';
 });
 
 
-mongoTest.controller('MembershipCtrl',function($scope, $location, $anchorScroll) {
+hangookdoApp.controller('MembershipCtrl',function($scope, $location, $anchorScroll) {
 	$scope.pageClass = 'page-membership';
 	$scope.gotoTop = function (){
 	    // set the location.hash to the id of
@@ -176,7 +176,7 @@ mongoTest.controller('MembershipCtrl',function($scope, $location, $anchorScroll)
 });
 
 
-mongoTest.controller('LoginCtrl',function($scope, $location, HangookdoService) {
+hangookdoApp.controller('LoginCtrl',function($scope, $location, HangookdoService) {
 	$scope.pageClass = 'page-login';
 	$scope.invalidLogin =false;
 	$scope.isLogin = false;
@@ -201,7 +201,7 @@ mongoTest.controller('LoginCtrl',function($scope, $location, HangookdoService) {
 });
 
 
-mongoTest.controller('RegisterCtrl',function($scope, $location, HangookdoService) {
+hangookdoApp.controller('RegisterCtrl',function($scope, $location, HangookdoService) {
 	$scope.pageClass = 'page-register';
 	$scope.user,
 	$scope.checkRequestId = {};
@@ -282,7 +282,7 @@ mongoTest.controller('RegisterCtrl',function($scope, $location, HangookdoService
 });
 
 
-mongoTest.controller('NavCtrl',function($scope, $location, $cookieStore, HangookdoService) {
+hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, HangookdoService) {
 	
 	$scope.isLoggedIn;
 	
@@ -306,7 +306,7 @@ mongoTest.controller('NavCtrl',function($scope, $location, $cookieStore, Hangook
     
 });
 
-mongoTest.controller('ActivateCtrl',function($scope, HangookdoService) {
+hangookdoApp.controller('ActivateCtrl',function($scope, HangookdoService) {
 	$scope.pageClass = 'page-activate';
 	$scope.isActivate = false;
 
@@ -329,21 +329,21 @@ mongoTest.controller('ActivateCtrl',function($scope, HangookdoService) {
 });
 
 
-mongoTest.controller('ActiveCtrl',function($scope, $location, HangookdoService) {
+hangookdoApp.controller('ActiveCtrl',function($scope, $location, HangookdoService) {
 	$scope.pageClass = 'page-active';
 	$scope.login = function(){
 		$location.path('login');
 	};
 });
 
-mongoTest.controller('InvalidCtrl',function($scope, $location) {
+hangookdoApp.controller('InvalidCtrl',function($scope, $location) {
 	$scope.pageClass = 'page-active';
 	$scope.redirectReset = function(){
 		$location.path('lostpassword');
 	};
 });
 
-mongoTest.controller('LostPasswordCtrl',function($scope, $location, HangookdoService) {
+hangookdoApp.controller('LostPasswordCtrl',function($scope, $location, HangookdoService) {
 	$scope.user,
 	$scope.isLostPassword = false;
 	$scope.cancelLostPassword = function(){
@@ -367,7 +367,7 @@ mongoTest.controller('LostPasswordCtrl',function($scope, $location, HangookdoSer
 	};
 });
 
-mongoTest.controller('ResetCtrl',function($scope, $location, HangookdoService) {
+hangookdoApp.controller('ResetCtrl',function($scope, $location, HangookdoService) {
 	$scope.user,
 	$scope.isNewPassword = false;
 	$scope.cancelNewPassword = function(){
@@ -392,7 +392,7 @@ mongoTest.controller('ResetCtrl',function($scope, $location, HangookdoService) {
 });
 
 
-mongoTest.controller('FooterCtrl',function($scope, $location, $anchorScroll) {
+hangookdoApp.controller('FooterCtrl',function($scope, $location, $anchorScroll) {
 	
 	 $scope.gotoTop = function (){
 		 

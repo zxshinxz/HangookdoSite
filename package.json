@@ -28,7 +28,9 @@
     "optimist": "^0.6.1",
     "matchdep": "^0.3.0",
     "nodemon": "^1.2.0",
-    "grunt-cli": "^0.1.13"
+    "grunt-cli": "^0.1.13",
+    "grunt-ngmin": "0.0.3",
+    "sails-mongo": "^0.10.0-rc5"
   },
   "scripts": {
     "start": "node app.js",

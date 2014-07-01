@@ -1,6 +1,6 @@
 'user strict'
 
-mongoTest.service('HangookdoService', function($q, $http) {
+hangookdoApp.service('HangookdoService', function($q, $http) {
 
 	
 	var user;
