@@ -134,11 +134,13 @@ module.exports = {
 				res.send(500, {
 					error : "DB Error"
 				});
+				return;
 			} else if (user) {
 				console.log(user);
 				res.send(400, {
 					error : "Username already Taken"
 				});
+				return;
 			} else {
 				User.create({
 					userid : newUser.userid,
@@ -150,8 +152,9 @@ module.exports = {
 					
 					if (error) {
 						res.send(500, {
-							error : "DB Error"
+							error : "DB Error, There are already existing user id or email used by other account."
 						});
+						return;
 					} else {
 						console.log("user created - from usercontroller.");
 						// res.send();
@@ -178,7 +181,7 @@ module.exports = {
 								 });
 							}else{
 								res.send(500, {
-									error: "Failed to send activation email."
+									error: "Failed to send activation email. "
 								});
 							}
 						});
@@ -211,15 +214,16 @@ module.exports = {
 			if(userinfo.hasOwnProperty("accesscount"))
 				if(userinfo.accesscount > 4){
 					res.send(403,{error: "Log in attempts to this account have exceeded 5 times. Please reset your password."});
+					return;
 				}
 			
-			console.log("Retrieved User ID:" + userinfo.userid
-					+ "   \nRetrieved User Pass:" + userinfo.password
-					+ "   \nRetrieved User First Name:" + userinfo.firstname
-					+ "   \nRetrieved User Last Name:" + userinfo.lastname
-					+ "   \nRetrieved User Email:" + userinfo.email
-					+ "   \nRetrieved User Role:" + userinfo.role
-					+ "   \nRetrieved User Active:" + userinfo.activated);
+//			console.log("Retrieved User ID:" + userinfo.userid
+//					+ "   \nRetrieved User Pass:" + userinfo.password
+//					+ "   \nRetrieved User First Name:" + userinfo.firstname
+//					+ "   \nRetrieved User Last Name:" + userinfo.lastname
+//					+ "   \nRetrieved User Email:" + userinfo.email
+//					+ "   \nRetrieved User Role:" + userinfo.role
+//					+ "   \nRetrieved User Active:" + userinfo.activated);
 			
 			
 			var result = bcrypt.compareSync(password, userinfo.password); 
