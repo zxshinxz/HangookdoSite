@@ -43,7 +43,7 @@
 								<td><b class="notification padding">*</b>Email</td><td><span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!registrationForm.email.$pristine && (registrationForm.email.$error.email || !user.emailValid)"></span><span class="input-icon valid glyphicon glyphicon-ok" ng-show="!registrationForm.email.$pristine && !registrationForm.email.$error.email && user.emailValid"> </span>
 								<input class="register-input form-control" name="email" ng-model="user.email" type='text' size="100" email required/>
 								<span class="error notification" ng-show="registrationForm.email.$error.email">Please enter right email format.</span>
-								<span class="error notification" ng-show="registrationForm.email.$error.email">This email is already associated with other existing user account.</span></td>
+								<span class="error notification" ng-show="!registrationForm.email.$pristine && !user.emailValid">This email is already associated with other existing user account.</span></td>
 							</tr>
 							<tr>
 								<td colspan="2">

@@ -152,7 +152,7 @@ module.exports = {
 					
 					if (error) {
 						res.send(500, {
-							error : "DB Error, There are already existing user id or email used by other account."
+							error : "There are already existing email used by other account."
 						});
 						return;
 					} else {

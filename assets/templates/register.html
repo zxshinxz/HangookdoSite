@@ -14,7 +14,7 @@
 								<td><b class="notification padding">*</b>User ID</td><td><span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!registrationForm.userid.$pristine && (registrationForm.userid.$error.minLength || !user.idValid)"></span><span class="input-icon valid glyphicon glyphicon-ok" ng-show="!registrationForm.userid.$pristine && !registrationForm.userid.$error.minLength && user.idValid"> </span>
 								<input maxlength="50" class="register-input form-control" name="userid" ng-model="user.userId" type='text' min-length="6" size="20" required/>
 								<span class="error notification" ng-show="registrationForm.userid.$error.minLength">User id has to be minimun of 6 characters and maximum of 50 characters.</span>
-								<span class="error notification" ng-show="!user.idValid">This user id is already used by the other user account.</span></td>
+								<span class="error notification" ng-show="!registrationForm.userid.$pristine && !user.idValid">This user id is already used by the other user account.</span></td>
 							</tr>
 							<tr>
 								<td><b class="notification padding">*</b>Password</td><td><span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!registrationForm.password.$pristine && registrationForm.password.$error.minLength"> </span><span class="input-icon valid glyphicon glyphicon-ok" ng-show="!registrationForm.password.$pristine && !registrationForm.password.$error.minLength"> </span>
@@ -43,7 +43,7 @@
 								<td><b class="notification padding">*</b>Email</td><td><span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!registrationForm.email.$pristine && (registrationForm.email.$error.email || !user.emailValid)"></span><span class="input-icon valid glyphicon glyphicon-ok" ng-show="!registrationForm.email.$pristine && !registrationForm.email.$error.email && user.emailValid"> </span>
 								<input class="register-input form-control" name="email" ng-model="user.email" type='text' size="100" email required/>
 								<span class="error notification" ng-show="registrationForm.email.$error.email">Please enter right email format.</span>
-								<span class="error notification" ng-show="!user.emailValid">This email is already associated with other existing user account.</span></td>
+								<span class="error notification" ng-show="!registrationForm.email.$pristine && !user.emailValid">This email is already associated with other existing user account.</span></td>
 							</tr>
 							<tr>
 								<td colspan="2">
