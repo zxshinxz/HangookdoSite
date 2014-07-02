@@ -44,8 +44,5 @@
   },
   "author": "anonymous node/sails user",
   "license": "ISC",
-  "devDependencies": {},
-  "scripts": {
-    "postinstall": "./node_modules/grunt-cli/bin/grunt prod"
-  }
+  "devDependencies": {}
 }
