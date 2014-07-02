@@ -25,6 +25,7 @@ var jsFilesToInject = [
 
   // Dependencies like sails.io.js, jQuery, or Angular
   // are brought in here
+  'js/dependencies/sails.io.js'
   	'js/dependencies/es5-shim.js',
 	'js/dependencies/jquery.js',
 	'js/dependencies/angular.js',
@@ -41,7 +42,6 @@ var jsFilesToInject = [
 	'js/dependencies/angular-file-upload.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-	'js/dependencies/sails.io.js'
 ];
 
 //Client-side javascript files to inject in order
