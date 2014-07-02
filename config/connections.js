@@ -79,8 +79,8 @@ module.exports.connections = {
 	
 	email:{
 		service: "Gmail",
-		emailId: "hangookdo@gmail.com",
-		emailPsd: "60064159"
+		emailId: process.env.EMAIL,
+		emailPsd: process.env.PSSD
 	}
 
 // More adapters:
