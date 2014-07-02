@@ -322,6 +322,11 @@ module.exports = {
 	sendmail : function(req, res) {
 		 initConfig();
 		 
+		 if(req.session.user.id)
+			 console.log(req.session.user.id);
+		 else
+			 console.log("do something");
+		 
 		 User.findOneByUserid(req.session.user.id).exec(function(err, user) {
 			 req.activator = {
 						id : user.userid,
