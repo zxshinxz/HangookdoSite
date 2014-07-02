@@ -75,6 +75,12 @@ module.exports.connections = {
 		user : 'YOUR_POSTGRES_USER',
 		password : 'YOUR_POSTGRES_PASSWORD',
 		database : 'YOUR_POSTGRES_DB'
+	},
+	
+	email:{
+		service: "Gmail",
+		emailId: process.env.EMAIL,
+		emailPsd: process.env.PSSD
 	}
 
 // More adapters:

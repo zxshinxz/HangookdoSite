@@ -36,8 +36,9 @@ function initConfig(){
 				}, data).exec(cb);
 			}
 		}
+	
 	var mailport = 465;
-	var url = "smtp://hangookdo@gmail.com:60064159@smtp.gmail.com:"
+	var url = "smtp://"+ sails.config.connections.email.emailId +":"+ sails.config.connections.email.emailPsd +"@smtp.gmail.com:"
 			+ mailport + "/localhost/" + escape("Account Service hangookdo@gmail.com")
 			+ "?secureConnection=true";
 	var mailTemplatesDir = __dirname + "/../../assets/mail_template/";

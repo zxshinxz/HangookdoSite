@@ -16,10 +16,10 @@ function initConfig(){
 	if(smtpTransport != null)
 		return;
 	smtpTransport = nodemailer.createTransport("SMTP",{
-		service: sails.config.hangookdo.email.service,
+		service: sails.config.connections.email.service,
 		 auth: {
-		     user: sails.config.hangookdo.email.emailId,
-		     pass: sails.config.hangookdo.email.emailPsd
+		     user: sails.config.connections.email.emailId,
+		     pass: sails.config.connections.email.emailPsd
 		 }
 		});
 }
