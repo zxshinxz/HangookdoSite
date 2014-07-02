@@ -47,5 +47,5 @@
   "devDependencies": {},
   "scripts": {
     "postinstall": "echo postinstall time Grun go@@@@@; ./node_modules/grunt-cli/bin/grunt --prod"
-  },
+  }
 }
