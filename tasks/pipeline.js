@@ -27,7 +27,7 @@ var jsFilesToInject = [
   // are brought in here
   	'js/dependencies/sails.io.js',
   	'js/dependencies/es5-shim.js',
-	'js/dependencies/dist/jquery.js',
+	'js/dependencies/jquery.js',
 	'js/dependencies/angular.js',
 	'js/dependencies/js/bootstrap.js',
 	'js/dependencies/ui-bootstrap-tpls.js',

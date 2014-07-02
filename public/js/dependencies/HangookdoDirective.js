@@ -21,7 +21,9 @@ hangookdoApp.directive('scrollSpy', function($window, $document) {
 				});
 			});
 			
+			
 			function findActiveSpy(){
+				
 				if($window.scrollY + $window.innerHeight == $document.height()){
 					scope.spies.forEach(function(spy){
 						if(spy.isEnd)
@@ -68,10 +70,17 @@ hangookdoApp.directive('spy', function($window, $location, $anchorScroll) {
 			 scope.firstspy = scope.firstspy || false;
 			 scope.lastspy = scope.lastspy || false;
 			 
+			 
+			 
 			 element.click(function () {
 			        $location.hash(attrs.spy);
 			        $anchorScroll();
 		      });
+			 
+//			 element.bind('click', function() {
+//			        $location.hash(attrs.spy);
+//			        $anchorScroll();
+//		      });
 			
 			parentCtrl.addSpy(
 				{
