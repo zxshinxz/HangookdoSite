@@ -60,11 +60,7 @@ module.exports.connections = {
 
 	herokuMongodbServer : {
 		adapter : 'sails-mongo',
-		host : 'kahana.mongohq.com',
-		port : 10096,
-		user : 'hangookdodb',
-		password : 'hangookdodbgrandmasterhwan',
-		database : 'app26969813'
+		url: process.env.DB_URL
 	},
 
 	// PostgreSQL is another officially supported relational database.
