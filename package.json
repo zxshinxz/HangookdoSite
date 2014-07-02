@@ -35,7 +35,7 @@
     "grunt-contrib-sass": "^0.7.3"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "sails lift --prod",
     "debug": "node debug app.js"
   },
   "main": "app.js",
