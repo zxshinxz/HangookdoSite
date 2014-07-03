@@ -16,7 +16,9 @@ function initConfig(){
 	if(smtpTransport != null)
 		return;
 	smtpTransport = nodemailer.createTransport("SMTP",{
-		service: sails.config.connections.email.service,
+//		service: sails.config.connections.email.service,
+		host: sails.config.connections.email.host, // hostname
+		port: sails.config.connections.email.port, // port for secure SMTP
 		 auth: {
 		     user: sails.config.connections.email.emailId,
 		     pass: sails.config.connections.email.emailPsd

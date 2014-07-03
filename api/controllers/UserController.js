@@ -37,10 +37,13 @@ function initConfig(){
 			}
 		}
 	
-	var mailport = 465;
-	var url = "smtp://"+ sails.config.connections.email.emailId +":"+ sails.config.connections.email.emailPsd +"@smtp.gmail.com:"
-			+ mailport + "/localhost/" + escape("Account Service hangookdo@gmail.com")
-			+ "?secureConnection=true";
+	
+
+		var url = "smtp://" + sails.config.connections.email.emailId + ":"
+			+ sails.config.connections.email.emailPsd + ""
+			+ sails.config.connections.email.host + ":"
+			+ sails.config.connections.email.port;
+	
 	var mailTemplatesDir = __dirname + "/../../assets/mail_template/";
 	
 	var config = {
@@ -218,13 +221,13 @@ module.exports = {
 					return;
 				}
 			
-//			console.log("Retrieved User ID:" + userinfo.userid
-//					+ "   \nRetrieved User Pass:" + userinfo.password
-//					+ "   \nRetrieved User First Name:" + userinfo.firstname
-//					+ "   \nRetrieved User Last Name:" + userinfo.lastname
-//					+ "   \nRetrieved User Email:" + userinfo.email
-//					+ "   \nRetrieved User Role:" + userinfo.role
-//					+ "   \nRetrieved User Active:" + userinfo.activated);
+// console.log("Retrieved User ID:" + userinfo.userid
+// + " \nRetrieved User Pass:" + userinfo.password
+// + " \nRetrieved User First Name:" + userinfo.firstname
+// + " \nRetrieved User Last Name:" + userinfo.lastname
+// + " \nRetrieved User Email:" + userinfo.email
+// + " \nRetrieved User Role:" + userinfo.role
+// + " \nRetrieved User Active:" + userinfo.activated);
 			
 			
 			var result = bcrypt.compareSync(password, userinfo.password); 
@@ -275,7 +278,7 @@ module.exports = {
 			}
 				
 			
-//			bcrypt.compare(password, userinfo.password, sendResult);
+// bcrypt.compare(password, userinfo.password, sendResult);
 			
 		}
 
@@ -302,7 +305,7 @@ module.exports = {
 			} else {
 				messageContent = "Invalid password. You have ";
 				res.send({message: messageContent});
-//				res.render('403');
+// res.render('403');
 			}
 		}
 	},
@@ -438,7 +441,7 @@ module.exports = {
 		var password = req.param("newpsd");
 		
 		bcrypt.genSalt(11, function(err, salt) {
-//			console.log(salt);
+// console.log(salt);
 			bcrypt.hash(password, salt, null, function(err, hash) {
 				if(err){
 					res.send(500, {
@@ -449,7 +452,7 @@ module.exports = {
 				
 				var newPassword = hash;
 				
-//				console.log("done created..." + values.userid);
+// console.log("done created..." + values.userid);
 				
 				User.update({
 					"userid" : userid

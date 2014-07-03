@@ -60,7 +60,7 @@ module.exports.connections = {
 
 	herokuMongodbServer : {
 		adapter : 'sails-mongo',
-		url: process.env.DB_URL
+		url: 'mongodb://hangookdodb:hangookdodbgrandmasterhwan@kahana.mongohq.com:10032/app27007423'
 	},
 
 	// PostgreSQL is another officially supported relational database.
@@ -78,10 +78,19 @@ module.exports.connections = {
 	},
 	
 	email:{
-		service: "Gmail",
-		emailId: process.env.EMAIL,
-		emailPsd: process.env.PSSD
+		host: "smtp.mandrillapp.com", // hostname
+//	    secureConnection: true, // use SSL
+	    port: 587, // port for secure SMTP
+//		service: "smtp.mandrillapp.com",
+		emailId: "app27007423@heroku.com",
+		emailPsd: "OVV5I-36lAWpUYL7CRdqnw"
 	}
+	
+//	email:{
+//		service: "Gmail",
+//		emailId: process.env.EMAIL,
+//		emailPsd: process.env.PSSD
+//	}
 
 // More adapters:
 // https://github.com/balderdashy/sails
