@@ -39,10 +39,24 @@ function initConfig(){
 	
 	
 
-		var url = "smtp://" + sails.config.connections.email.emailId + ":"
-			+ sails.config.connections.email.emailPsd + ""
-			+ sails.config.connections.email.host + ":"
-			+ sails.config.connections.email.port;
+//		var url = "smtp://" + sails.config.connections.email.emailId + ":"
+//			+ sails.config.connections.email.emailPsd + ""
+//			+ sails.config.connections.email.host + ":"
+//			+ sails.config.connections.email.port;
+	
+	var url = {
+			host : sails.config.connections.email.host,
+			port : sails.config.connections.email.port,
+			from : "Hapkido Hangookdo Account Service ✔ <hangookdo@gmail.com>",
+			domain : "Hangookdo",
+			secure : false,
+			protocol: "SMTP"
+	}
+	
+	url.auth = {
+		     user: sails.config.connections.email.emailId,
+		     pass: sails.config.connections.email.emailPsd
+		 }
 	
 	var mailTemplatesDir = __dirname + "/../../assets/mail_template/";
 	

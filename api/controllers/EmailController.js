@@ -57,7 +57,7 @@ module.exports = {
 		//setup e-mail data with unicode symbols
 		var mailOptions = {
 		 from: emailaddress, // sender address
-		 to: "yhhong100@gmail.com", // list of receivers
+		 to: "yhhong100@gmail.com, andy.yoonyong@gmail.com", // list of receivers
 		 subject: mail.subject, // Subject line
 		 text: mail.plain, // plaintext body
 		 html: mail.html // html body
