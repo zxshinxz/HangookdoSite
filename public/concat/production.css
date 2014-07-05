@@ -6190,6 +6190,7 @@ table.time-table > tbody > tr > td{
   border: 1px solid #aaa;
   padding: 0px 5px;
   font-weight: bold;
+  width: 120px;
 }
 
 table.time-table > tbody > tr > td.black-belt{
