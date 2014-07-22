@@ -5798,13 +5798,15 @@ button.close {
 
 #main {
     overflow: auto;
-    padding-bottom: 53px; /* must be same height as the footer */
+    /* 
+    padding-bottom: 53px; must be same height as the footer 
+    */
     height: 100%
 }
 
 #footer {
     position: relative;
-    margin-top: -53px; /* negative value of footer height */
+    margin-top: -23px; /* negative value of footer height */
     height: 33px;
     line-height: 33px;
     text-align: center;
