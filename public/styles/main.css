@@ -20,13 +20,15 @@
 
 #footer {
     position: relative;
-    margin-top: -23px; /* negative value of footer height */
+    /* negative value of footer height 
+    margin-top: -23px; 
     height: 33px;
+     */
     line-height: 33px;
     text-align: center;
 }
 
-html { height: 100%; }
+/*html { height: 100%; }*/
 
 body {
   padding-bottom: 40px;
