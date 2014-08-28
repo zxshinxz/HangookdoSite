@@ -265,7 +265,7 @@ module.exports = {
 								"isUserActive":false
 						}
 						_.extend(userinfo,{"isUserActive":false});
-						res.send(200,{user: userinfo, token: sailsTokenAuth.issueToken(userinfo)});
+						res.send(200,{user: userinfo});
 						
 					}
 					
