@@ -4,13 +4,96 @@ var hangookdoApp = angular.module('hangookdoApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
     'angularFileUpload',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngRoute'
   ]);
 hangookdoApp.config([
   '$routeProvider',
-  function ($routeProvider) {
+  'AccessLevels',
+  function ($routeProvider, AccessLevels) {
+    //	$urlRouterProvider.otherwise('/');
+    //
+    //	$stateProvider
+    //	.state('anon', {
+    //		abstract: true,
+    //		template: '<ui-view/>',
+    //		data: {
+    //			access: AccessLevels.anon
+    //		}
+    //	})
+    //	.state('anon.home', {
+    //		url: '/',
+    //		templateUrl: 'templates/main.html',
+    //		controller : 'MainCtrl'
+    //	})
+    //	.state('anon.about', {
+    //		url: '/about',
+    //		templateUrl: 'templates/about.html',
+    //		controller : 'AboutCtrl'
+    //	})
+    //	.state('anon.contact', {
+    //		url: '/contact',
+    //		templateUrl: 'templates/contact.html',
+    //		controller : 'ContactCtrl'
+    //	})
+    //	.state('anon.links', {
+    //		url: '/links',
+    //		templateUrl: 'templates/links.html',
+    //		controller : 'LinksCtrl'
+    //	})
+    //	.state('anon.membership', {
+    //		url: '/membership',
+    //		templateUrl: 'templates/contact.html',
+    //		controller : 'MembershipCtrl'
+    //	})
+    //	.state('anon.login', {
+    //		url: '/login',
+    //		templateUrl: 'templates/contact.html',
+    //		controller : 'LoginCtrl'
+    //	})
+    //	.state('anon.register', {
+    //		url: '/register',
+    //		templateUrl: 'templates/register.html',
+    //		controller : 'RegisterCtrl'
+    //	})
+    //	.state('anon.activate', {
+    //		url: '/activate',
+    //		templateUrl: 'templates/activate.html',
+    //		controller : 'ActivateCtrl'
+    //	})
+    //	.state('anon.active', {
+    //		url: '/active',
+    //		templateUrl: 'templates/active.html',
+    //		controller : 'ActiveCtrl'
+    //	})
+    //	.state('anon.lostpassword', {
+    //		url: '/lostpassword',
+    //		templateUrl: 'templates/lostpassword.html',
+    //		controller : 'LostPasswordCtrl'
+    //	})
+    //	.state('anon.reset', {
+    //		url: '/reset',
+    //		templateUrl: 'templates/reset.html',
+    //		controller : 'ResetCtrl'
+    //	})
+    //	.state('anon.invalid', {
+    //		url: '/invalid',
+    //		templateUrl: 'templates/invalid.html',
+    //		controller : 'InvalidCtrl'
+    //	})
+    //	.state('anon.news1', {
+    //		url: '/login',
+    //		templateUrl: 'templates/website.html'
+    //	})
+    //	.state('anon.news2', {
+    //		url: '/login',
+    //		templateUrl: 'templates/tshirt.html'
+    //	})
+    //	.state('anon.news3', {
+    //		url: '/login',
+    //		templateUrl: 'templates/grading.html'
+    //	});
     $routeProvider.when('/', {
       templateUrl: 'templates/main.html',
       controller: 'MainCtrl'
@@ -47,7 +130,7 @@ hangookdoApp.config([
     }).when('/invalid', {
       templateUrl: 'templates/invalid.html',
       controller: 'InvalidCtrl'
-    }).when('/news1', { templateUrl: 'templates/website.html' }).when('/news2', { templateUrl: 'templates/tshirt.html' }).when('/news3', { templateUrl: 'templates/grading.html' }).otherwise({ redirectTo: '/' });
+    }).when('/news1', { templateUrl: 'templates/website.html' }).when('/news2', { templateUrl: 'templates/tshirt.html' }).when('/news3', { templateUrl: 'templates/grading.html' });
   }
 ]);
 'user strict';
@@ -330,16 +413,19 @@ hangookdoApp.controller('NavCtrl', [
   function ($scope, $location, $cookieStore, HangookdoService) {
     $scope.isLoggedIn;
     $scope.getFullName = function () {
-      var user = HangookdoService.getUser();
+      var user = HangookdoService.getUser().user;
       $scope.fullName = user.firstname + ' ' + user.lastname;
     };
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
     $scope.service = HangookdoService;
-    $scope.$watch('service.isLoggedIn()', function (newVal, oldVal) {
-      if (newVal !== oldVal) {
-        $scope.isLoggedIn = newVal;
+    $scope.logOut = function () {
+      HangookdoService.logout();
+    };
+    $scope.$watch('service.isLoggedIn()', function (newVal) {
+      $scope.isLoggedIn = newVal;
+      if ($scope.fullName == undefined) {
         $scope.getFullName();
       }
     });
@@ -734,9 +820,14 @@ hangookdoApp.directive('same', function () {
 hangookdoApp.service('HangookdoService', [
   '$q',
   '$http',
-  function ($q, $http) {
+  'LocalService',
+  'AccessLevels',
+  function ($q, $http, LocalService, AccessLevels) {
     var user;
+    if (LocalService.get('hangookdo_auth_token') != null)
+      user = angular.fromJson(LocalService.get('hangookdo_auth_token'));
     function setUser(obj) {
+      LocalService.set('hangookdo_auth_token', JSON.stringify(obj));
       user = obj;
     }
     var _getUser = function () {
@@ -888,13 +979,18 @@ hangookdoApp.service('HangookdoService', [
         },
         headers: { 'Content-Type': 'application/json' }
       }).success(function (data, status, headers, config) {
-        if (data.isUserActive)
+        if (data.user.isUserActive) {
           setUser(data);
-        deferred.resolve(data);
+        }
+        deferred.resolve(data.user);
       }).error(function (data, status, headers, config) {
         deferred.reject(data.error);
       });
       return deferred.promise;
+    };
+    var _logout = function () {
+      LocalService.unset('hangookdo_auth_token');
+      user = null;
     };
     var _reactivate = function () {
       var deferred = $q.defer();
@@ -940,6 +1036,16 @@ hangookdoApp.service('HangookdoService', [
       });
       return deferred.promise;
     };
+    var _authorize = function (access) {
+      if (access === AccessLevels.user) {
+        return this.isAuthenticated();
+      } else {
+        return true;
+      }
+    };
+    var _isAuthenticated = function () {
+      return LocalService.get('hangookdo_auth_token');
+    };
     return {
       createFile: _createFile,
       getFiles: _getFiles,
@@ -949,11 +1055,68 @@ hangookdoApp.service('HangookdoService', [
       checkId: _checkId,
       checkEmail: _checkEmail,
       login: _login,
+      logout: _logout,
       reactivate: _reactivate,
       resetPassword: _resetPassword,
       newPassword: _newPassword,
       isLoggedIn: _isLoggedIn,
-      getUser: _getUser
+      getUser: _getUser,
+      authorize: _authorize,
+      isAuthenticated: _isAuthenticated
     };
   }
 ]);
+/**
+ * 
+ */
+hangookdoApp.constant('AccessLevels', {
+  anon: 0,
+  user: 1
+});
+'user strict';
+hangookdoApp.factory('AuthInterceptor', [
+  '$q',
+  '$injector',
+  '$location',
+  function ($q, $injector, $location) {
+    var LocalService = $injector.get('LocalService');
+    return {
+      request: function (config) {
+        var token;
+        if (LocalService.get('auth_token')) {
+          token = angular.fromJson(LocalService.get('auth_token')).token;
+        }
+        if (token) {
+          config.headers.Authorization = 'Bearer ' + token;
+        }
+        return config;
+      },
+      responseError: function (response) {
+        if (response.status === 401 || response.status === 403) {
+          LocalService.unset('auth_token');
+          //          $injector.get('$state').go('anon.login');
+          $location.path('/login');
+        }
+        return $q.reject(response);
+      }
+    };
+  }
+]).config([
+  '$httpProvider',
+  function ($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+  }
+]);
+angular.module('hangookdoApp').factory('LocalService', function () {
+  return {
+    get: function (key) {
+      return localStorage.getItem(key);
+    },
+    set: function (key, val) {
+      return localStorage.setItem(key, val);
+    },
+    unset: function (key) {
+      return localStorage.removeItem(key);
+    }
+  };
+});

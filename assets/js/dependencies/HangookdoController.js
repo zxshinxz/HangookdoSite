@@ -287,7 +287,7 @@ hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, Hang
 	$scope.isLoggedIn;
 	
 	$scope.getFullName = function(){
-		var user = HangookdoService.getUser();
+		var user = HangookdoService.getUser().user;
 		$scope.fullName = user.firstname +" "+ user.lastname;
 	}
 	
@@ -297,9 +297,13 @@ hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, Hang
     
     $scope.service = HangookdoService;
     
-    $scope.$watch("service.isLoggedIn()",function(newVal, oldVal){
-    	if(newVal !== oldVal){
-    		$scope.isLoggedIn = newVal;
+    $scope.logOut = function(){
+    	HangookdoService.logout();
+    }
+    
+    $scope.$watch("service.isLoggedIn()",function(newVal){
+    	$scope.isLoggedIn = newVal;
+    	if($scope.fullName == undefined){
     		$scope.getFullName();
     	}
     });

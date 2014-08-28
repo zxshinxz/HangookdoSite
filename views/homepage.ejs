@@ -37,8 +37,11 @@
 								</li>
 							</ul>
 							<ul ng-show="isLoggedIn" class="nav-logins nav navbar-nav" >
-								<li>
+								<li class='nameLabel'>
 									<label >Welcome!<span class="space">  </span>{{fullName}}</label>
+								</li>
+								<li class='nameLabel'>
+									<a ng-click='logOut()'>Log out</a>
 								</li>
 							</ul>
 						</div>
@@ -46,7 +49,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="main" class="page {{ pageClass }}" ng-view=""></div>
+		<div id="main" class="page {{ pageClass }}" ng-view></div>
 	</div>
 	<br/>
 	<!-- FOOTER -->

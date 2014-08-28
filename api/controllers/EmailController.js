@@ -74,7 +74,5 @@ module.exports = {
 				 		"reponde to your enquery as soon as possible.");
 			 }
 		});
-
 	}
-
 };

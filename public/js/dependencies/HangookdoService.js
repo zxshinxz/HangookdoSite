@@ -1,11 +1,14 @@
 'user strict'
 
-hangookdoApp.service('HangookdoService', function($q, $http) {
-
+hangookdoApp.service('HangookdoService', function($q, $http, LocalService, AccessLevels) {
 	
 	var user;
 	
+	if(LocalService.get('hangookdo_auth_token') != null)
+		user = angular.fromJson(LocalService.get('hangookdo_auth_token'));
+	
 	function setUser(obj){
+		LocalService.set('hangookdo_auth_token', JSON.stringify(obj));
 		user = obj;
 	}
 	
@@ -194,9 +197,11 @@ hangookdoApp.service('HangookdoService', function($q, $http) {
 			headers: {'Content-Type': 'application/json'}
 		})
 		.success(function(data, status, headers, config){
-			if(data.isUserActive)
+			
+			if(data.user.isUserActive){
 				setUser(data);
-			deferred.resolve(data);
+			}
+			deferred.resolve(data.user);
 			
 		})
 		.error(function(data, status, headers, config){
@@ -204,6 +209,11 @@ hangookdoApp.service('HangookdoService', function($q, $http) {
 		});
 		
 		return deferred.promise;
+	}
+	
+	var _logout = function(){
+		LocalService.unset('hangookdo_auth_token');
+		user = null;
 	}
 	
 	var _reactivate = function(){
@@ -269,6 +279,18 @@ hangookdoApp.service('HangookdoService', function($q, $http) {
 		return deferred.promise;
 	}
 	
+	var _authorize = function(access) {
+	      if (access === AccessLevels.user) {
+	          return this.isAuthenticated();
+	        } else {
+	          return true;
+	        }
+      }
+	
+	var _isAuthenticated = function(){
+		return LocalService.get('hangookdo_auth_token');
+	}
+	
 
 	return {
 		createFile : _createFile,
@@ -279,10 +301,13 @@ hangookdoApp.service('HangookdoService', function($q, $http) {
 		checkId: _checkId,
 		checkEmail: _checkEmail,
 		login: _login,
+		logout: _logout,
 		reactivate: _reactivate,
 		resetPassword: _resetPassword,
 		newPassword: _newPassword,
 		isLoggedIn: _isLoggedIn,
-		getUser: _getUser
+		getUser: _getUser,
+		authorize: _authorize,
+		isAuthenticated: _isAuthenticated
 	};
 });

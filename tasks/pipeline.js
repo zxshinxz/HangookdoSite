@@ -40,6 +40,7 @@ var jsFilesToInject = [
 	'js/dependencies/angular-sanitize.js',
 	'js/dependencies/angular-touch.js',
 	'js/dependencies/angular-file-upload.js'
+//	'js/dependencies/angular-ui-router.js'
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
 ];
@@ -50,7 +51,10 @@ var jsFilesToInjectForApp = [
 	'js/dependencies/app.js',
 	'js/dependencies/HangookdoController.js',
 	'js/dependencies/HangookdoDirective.js',
-	'js/dependencies/HangookdoService.js'
+	'js/dependencies/HangookdoService.js',
+	'js/dependencies/HangookdoAccessLevels.js',
+	'js/dependencies/HangookdoAuth.js',
+	'js/dependencies/localStorage.js'
 ];
 
 // Client-side HTML templates are injected using the sources below

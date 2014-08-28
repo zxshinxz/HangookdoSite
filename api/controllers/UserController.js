@@ -154,7 +154,6 @@ module.exports = {
 				});
 				return;
 			} else if (user) {
-				console.log(user);
 				res.send(400, {
 					error : "Username already Taken"
 				});
@@ -188,11 +187,11 @@ module.exports = {
 							console.log("waiting for activation");
 							if(req.activator.code == 201){
 								
-								req.session.authenticated = true;
-								 req.session.user = {
-											"id": user.userid,
-											"isUserActive":false
-								 }
+//								req.session.authenticated = true;
+//								 req.session.user = {
+//											"id": user.userid,
+//											"isUserActive":false
+//								 }
 								 
 								 res.send(200, {
 									 message: "We have sent email for activation. Please activate your account."
@@ -215,8 +214,6 @@ module.exports = {
 		var id = req.param("id");
 		var password = req.param("password");
 		var userinfo = null;
-
-		console.log("ID :" + id + "  Passwrod :" + password);
 
 		User.findOneByUserid(id).exec(tryAuthenticate);
 
@@ -247,7 +244,7 @@ module.exports = {
 			var result = bcrypt.compareSync(password, userinfo.password); 
 			
 			if (result) {
-				req.session.authenticated = true;
+//				req.session.authenticated = true;
 				userinfo.accesscount = 0;
 				
 				User.update({
@@ -255,25 +252,28 @@ module.exports = {
 				}, {accesscount:userinfo.accesscount}).exec(function(){
 				
 					if(userinfo.activation_code == "X"){
-						req.session.user = {
-								"id": id,
-								"isUserActive":true
-						}
+//						req.session.user = {
+//								"id": id,
+//								"isUserActive":true
+//						}
 						_.extend(userinfo,{"isUserActive":true});
-						res.send(200,userinfo);
+						res.send(200,{user: userinfo, token: sailsTokenAuth.issueToken(userinfo)});
+						
 					}else{
 						req.session.user = {
 								"id": id,
 								"isUserActive":false
 						}
 						_.extend(userinfo,{"isUserActive":false});
-						res.send(200,userinfo);
+						res.send(200,{user: userinfo, token: sailsTokenAuth.issueToken(userinfo)});
+						
 					}
+					
 				});
 			} else {
 				
-				delete req.session.authenticated;
-				delete req.session.user;
+//				delete req.session.authenticated;
+//				delete req.session.user;
 				
 				if(userinfo.accesscount)
 					userinfo.accesscount++;
@@ -293,34 +293,34 @@ module.exports = {
 				
 			
 // bcrypt.compare(password, userinfo.password, sendResult);
-			
-		}
+//			
+//		}
 
-		function sendResult(err, result) {
-
-			if (!err) {
-				console.log("Authenticated status:" + result);
-			} else {
-				console.log(error);
-			}
-
-			if (result) {
-				req.session.authenticated = true;
-				req.session.user = {
-						"id": id
-				}
-				if(userinfo.activation_code == "X"){
-					req.session.user.isUserActive =true;
-					res.redirect('/');
-				}else{
-					req.session.user.isUserActive =false;
-					res.redirect('/#/activate');
-				}
-			} else {
-				messageContent = "Invalid password. You have ";
-				res.send({message: messageContent});
+//		function sendResult(err, result) {
+//
+//			if (!err) {
+//				console.log("Authenticated status:" + result);
+//			} else {
+//				console.log(error);
+//			}
+//
+//			if (result) {
+//				req.session.authenticated = true;
+//				req.session.user = {
+//						"id": id
+//				}
+//				if(userinfo.activation_code == "X"){
+//					req.session.user.isUserActive =true;
+//					res.redirect('/');
+//				}else{
+//					req.session.user.isUserActive =false;
+//					res.redirect('/#/activate');
+//				}
+//			} else {
+//				messageContent = "Invalid password. You have ";
+//				res.send({message: messageContent});
 // res.render('403');
-			}
+//			}
 		}
 	},
 	activate : function(req, res) {
